@@ -8,7 +8,7 @@ import Generating from "./Generating";
 import Notification from "./Notification";
 import CompanyLogos from "./CompanyLogos";
 
-const Hero = () => {
+const features = () => {
   const parallaxRef = useRef(null);
 
   return (
@@ -90,4 +90,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default features;
