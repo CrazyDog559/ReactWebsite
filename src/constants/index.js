@@ -50,15 +50,17 @@ export const navigation = [
   },
   {
     id: "2",
-    title: "Pricing",
-    url: "#pricing",
+    title: "Roadmap",
+    url: "#roadmap",
   },
-
+  /*
   {
     id: "3",
     title: "Roadmap",
     url: "#roadmap",
   },
+*/
+
   {
     id: "4",
     title: "Contact",

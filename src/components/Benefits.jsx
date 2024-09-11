@@ -9,9 +9,22 @@ import ClipPath from "../assets/svg/ClipPath";
 const Benefits = ({ onNavigate }) => {
   const handleExploreMore = (id) => {
     if (id === "4") {
-      onNavigate(); // Call the onNavigate prop to navigate to the Portfolio page
+      onNavigate("portfolio");
+    } else if (id === "5") {
+      onNavigate("aboutMe");
     } else {
       console.log(`Explore more for item ${id}`);
+    }
+  };
+
+  const getButtonLabel = (id) => {
+    switch (id) {
+      case "4":
+        return "View Portfolio";
+      case "5":
+        return "Learn About Me";
+      default:
+        return "Explore more";
     }
   };
 
@@ -41,7 +54,7 @@ const Benefits = ({ onNavigate }) => {
                     onClick={() => handleExploreMore(item.id)}
                     className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
                   >
-                    Explore more
+                    {getButtonLabel(item.id)}
                     <Arrow className="inline-block ml-2" />
                   </button>
                 </div>

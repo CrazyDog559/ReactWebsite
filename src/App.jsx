@@ -5,11 +5,12 @@ import Collaboration from "./components/Collaboration";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Hero";
-import Pricing from "./components/Pricing";
+//import Pricing from "./components/Pricing";
 import Roadmap from "./components/Roadmap";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Portfolio from "./components/Portfolio";
+import AboutMe from "./components/AboutMe"; // Import the AboutMe component
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
@@ -20,10 +21,9 @@ const App = () => {
         return (
           <>
             <Home />
-            <Benefits onNavigate={() => setCurrentPage("portfolio")} />
+            <Benefits onNavigate={setCurrentPage} />
             <Collaboration />
             <Services />
-            <Pricing />
             <Roadmap />
             <Contact />
             <Footer />
@@ -31,6 +31,8 @@ const App = () => {
         );
       case "portfolio":
         return <Portfolio onNavigateBack={() => setCurrentPage("home")} />;
+      case "aboutMe":
+        return <AboutMe onNavigateBack={() => setCurrentPage("home")} />;
       default:
         return null;
     }
@@ -39,7 +41,9 @@ const App = () => {
   return (
     <>
       <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
-        <Header />
+        {currentPage !== "portfolio" && currentPage !== "aboutMe" && (
+          <Header onNavigate={setCurrentPage} />
+        )}
         {renderPage()}
       </div>
 
