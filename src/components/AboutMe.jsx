@@ -32,10 +32,11 @@ const AboutMe = ({ onNavigateBack }) => {
       <div className="pt-[5.25rem] p-8">
         <h2 className="text-3xl font-bold mb-4">About Me</h2>
         <p className="text-lg">
-          This section can include details about your background, experience,
-          skills, and anything else you'd like to share about yourself. You can
-          format it with headings, paragraphs, images, and other elements to
-          make it visually appealing.
+          Hi I am Drew Wan studying computer engineering at UCLA. I am still
+          working on my website but I hope you enjoy. I like to play volleyball,
+          baseball, video games, and rock climb. I am passionate about video
+          editing and photography which grew my interest in computers. I
+          currently volunteer at a local church in the youth ministry. I
         </p>
         {/* Add more content about you as needed */}
       </div>

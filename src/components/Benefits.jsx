@@ -8,7 +8,15 @@ import ClipPath from "../assets/svg/ClipPath";
 
 const Benefits = ({ onNavigate }) => {
   const handleExploreMore = (id) => {
-    if (id === "4") {
+    if (id === "0") {
+      window.open("https://www.instagram.com/project_render/");
+    } else if (id === "1") {
+      window.open("https://www.youtube.com/@CrazyDogPlayz");
+    } else if (id === "2") {
+      window.open("https://www.youtube.com/@skoolmadeez8251");
+    } else if (id == "3") {
+      window.open("https://github.com/CrazyDog559");
+    } else if (id === "4") {
       onNavigate("portfolio");
     } else if (id === "5") {
       onNavigate("aboutMe");

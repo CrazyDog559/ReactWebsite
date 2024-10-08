@@ -15,27 +15,24 @@ const Services = () => {
   return (
     <Section id="photography">
       <div className="container">
-        <Heading
-          title="Generative AI made for creators."
-          text="Brainwave unlocks the potential of AI-powered applications"
-        />
+        <Heading title="Photography" text="My Video and Photo Work" />
 
         <div className="relative">
-          <div className="relative z-1 flex items-center h-[39rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:p-20 xl:h-[46rem]">
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none md:w-3/5 xl:w-auto">
+          <div className="relative z-1 flex items-center h-[38rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:p-20 xl:h-[40rem]">
+            <div className="absolute top-0 left-0 w-full h-full">
               <img
-                className="w-full h-full object-cover md:object-right"
+                className="w-full h-full object-cover "
                 width={800}
                 alt="Smartest AI"
-                height={730}
+                height={800}
                 src={service1}
               />
             </div>
 
-            <div className="relative z-1 max-w-[17rem] ml-auto">
-              <h4 className="h4 mb-4">Smartest AI</h4>
+            <div className="relative z-1 max-w-[17rem]">
+              <h4 className="h4 mb-4">Portraits</h4>
               <p className="body-2 mb-[3rem] text-n-3">
-                Brainwave unlocks the potential of AI-powered applications
+                Headshots and Modeling
               </p>
               <ul className="body-2">
                 {brainwaveServices.map((item, index) => (
@@ -68,20 +65,18 @@ const Services = () => {
               <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-b from-n-8/0 to-n-8/90 lg:p-15">
                 <h4 className="h4 mb-4">Photo editing</h4>
                 <p className="body-2 mb-[3rem] text-n-3">
-                  Automatically enhance your photos using our AI app&apos;s
-                  photo editing feature. Try it now!
+                  Lightroom and Photoshop
                 </p>
               </div>
 
-              <PhotoChatMessage />
+              {/*<PhotoChatMessage /> */}
             </div>
 
             <div className="p-4 bg-n-7 rounded-3xl overflow-hidden lg:min-h-[46rem]">
               <div className="py-12 px-4 xl:px-8">
-                <h4 className="h4 mb-4">Video generation</h4>
+                <h4 className="h4 mb-4">Video Editing</h4>
                 <p className="body-2 mb-[2rem] text-n-3">
-                  The world’s most powerful AI photo and video art generation
-                  engine. What will you create?
+                  Premire Pro and Adobe After Effects
                 </p>
 
                 <ul className="flex items-center justify-between">

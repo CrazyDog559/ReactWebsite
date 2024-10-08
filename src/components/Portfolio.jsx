@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { CrazyDogLogo } from "../assets";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import Footer from "./Footer";
-import PhotoGrid from "./PhotoGrid"; // Import the PhotoGrid component
-import PhotoModal from "./PhotoModal"; // Import the PhotoModal component
+import PhotoGrid from "./PhotoGrid"; // Import the updated PhotoGrid component
 
 import img8296 from "../assets/Portfolio/Seattle/IMG_8296.jpg"; // photo 1
 import img8351 from "../assets/Portfolio/Seattle/IMG_8351.jpg"; // photo 2
+import img6060 from "../assets/Portfolio/Portraits/IMG_6060.jpg";
 
-const Portfolio = ({ onNavigateBack }) => {
+const Portfolio = ({ onNavigateBack, onNavigateToPortraits }) => {
   const [openNavigation, setOpenNavigation] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null); // State to manage the selected photo for the modal
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -30,37 +29,28 @@ const Portfolio = ({ onNavigateBack }) => {
     }
   };
 
-  const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedPhoto(null);
-  };
-
   // Sample photos array
   const photos = [
-    { src: img8296, alt: "Photo 1" },
+    { src: img6060, alt: "Photo 1" },
     { src: img8351, alt: "Photo 2" },
-    { src: "path/to/photo3.jpg", alt: "Photo 3" },
-    { src: "path/to/photo3.jpg", alt: "Photo 4" },
-    { src: "path/to/photo3.jpg", alt: "Photo 5" },
-    { src: "path/to/photo3.jpg", alt: "Photo 6" },
-    { src: "path/to/photo3.jpg", alt: "Photo 7" },
-    { src: "path/to/photo3.jpg", alt: "Photo 8" },
-    { src: "path/to/photo3.jpg", alt: "Photo 9" },
-    { src: "path/to/photo3.jpg", alt: "Photo 10" },
-    { src: "path/to/photo3.jpg", alt: "Photo 11" },
+    { src: img8296, alt: "Photo 3" },
+    { src: "path/to/photo4.jpg", alt: "Photo 4" },
     // Add more photos as needed
   ];
 
+  // Handle the photo click and navigate to Portraits
+  const handlePhotoSelect = (photo, index) => {
+    if (index === 0) {
+      // For now, assume you want to navigate to Portraits when the first photo is clicked
+      onNavigateToPortraits(photo); // Pass the selected photo to the parent (App)
+    } else {
+      console.log(`Clicked on photo ${photo.alt}`);
+    }
+  };
+
   return (
     <div>
-      <div
-        className={`fixed top-0 left-0 w-full z-50 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
-          openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
-        }`}
-      >
+      <div>
         <div className="flex items-center px-6 lg:px-10 xl:px-12 max-lg:py-4">
           <button
             onClick={handleBackClick}
@@ -82,20 +72,13 @@ const Portfolio = ({ onNavigateBack }) => {
         </div>
       </div>
 
+      {/* Content */}
       <div className="pt-[5.25rem]">
-        {/* Offset for the fixed header */}
-        <PhotoGrid
-          photos={photos}
-          onPhotoClick={handlePhotoClick} // Pass the click handler to PhotoGrid
-        />
+        <PhotoGrid photos={photos} onPhotoSelect={handlePhotoSelect} />{" "}
+        {/* Pass the photos array */}
       </div>
 
       <Footer />
-
-      {/* Render the PhotoModal if a photo is selected */}
-      {selectedPhoto && (
-        <PhotoModal photo={selectedPhoto} onClose={handleCloseModal} />
-      )}
     </div>
   );
 };
