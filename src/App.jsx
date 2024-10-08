@@ -55,9 +55,9 @@ const App = () => {
   return (
     <>
       {/* Render the Header only when it's NOT the portraits or portfolio page */}
-      {currentPage !== "portraits" && currentPage !== "portfolio" && (
-        <Header onNavigate={setCurrentPage} />
-      )}
+      {currentPage !== "portraits" &&
+        currentPage !== "portfolio" &&
+        currentPage !== "aboutMe" && <Header onNavigate={setCurrentPage} />}
       <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
         {renderPage()}
       </div>

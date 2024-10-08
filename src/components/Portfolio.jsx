@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { CrazyDogLogo } from "../assets";
-import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import Footer from "./Footer";
 import PhotoGrid from "./PhotoGrid"; // Import the updated PhotoGrid component
 
@@ -9,26 +8,6 @@ import img8351 from "../assets/Portfolio/Seattle/IMG_8351.jpg"; // photo 2
 import img6060 from "../assets/Portfolio/Portraits/IMG_6060.jpg";
 
 const Portfolio = ({ onNavigateBack, onNavigateToPortraits }) => {
-  const [openNavigation, setOpenNavigation] = useState(false);
-
-  const toggleNavigation = () => {
-    if (openNavigation) {
-      setOpenNavigation(false);
-      enablePageScroll();
-    } else {
-      setOpenNavigation(true);
-      disablePageScroll();
-    }
-  };
-
-  const handleBackClick = () => {
-    onNavigateBack();
-    if (openNavigation) {
-      enablePageScroll();
-      setOpenNavigation(false);
-    }
-  };
-
   // Sample photos array
   const photos = [
     { src: img6060, alt: "Photo 1" },
@@ -41,7 +20,6 @@ const Portfolio = ({ onNavigateBack, onNavigateToPortraits }) => {
   // Handle the photo click and navigate to Portraits
   const handlePhotoSelect = (photo, index) => {
     if (index === 0) {
-      // For now, assume you want to navigate to Portraits when the first photo is clicked
       onNavigateToPortraits(photo); // Pass the selected photo to the parent (App)
     } else {
       console.log(`Clicked on photo ${photo.alt}`);
@@ -50,11 +28,13 @@ const Portfolio = ({ onNavigateBack, onNavigateToPortraits }) => {
 
   return (
     <div>
-      <div>
-        <div className="flex items-center px-6 lg:px-10 xl:px-12 max-lg:py-4">
+      {/* Thicker Header with Vertically Centered Back Button */}
+      <div className="fixed top-0 left-0 w-full z-50 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm h-[5rem]">
+        <div className="flex items-center h-full px-6 lg:px-10 xl:px-12">
+          {/* Vertically Centered Back Button */}
           <button
-            onClick={handleBackClick}
-            className="block w-[12rem] xl:mr-8"
+            onClick={onNavigateBack}
+            className="block w-[12rem]"
             style={{
               background: "none",
               border: "none",
@@ -72,10 +52,9 @@ const Portfolio = ({ onNavigateBack, onNavigateToPortraits }) => {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="pt-[5.25rem]">
-        <PhotoGrid photos={photos} onPhotoSelect={handlePhotoSelect} />{" "}
-        {/* Pass the photos array */}
+      {/* Content with header offset */}
+      <div className="pt-[7rem] p-8">
+        <PhotoGrid photos={photos} onPhotoSelect={handlePhotoSelect} />
       </div>
 
       <Footer />
